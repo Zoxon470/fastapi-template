@@ -5,7 +5,7 @@ from alembic import context
 from src.config import settings
 from src.db.session import engine
 from src.db.models import Base
-from src.auth.models import User
+from src.user.models import User
 from src.example.models import Example
 
 # this is the Alembic Config object, which provides

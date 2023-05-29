@@ -1,13 +1,19 @@
-from typing import Optional
 import uuid
+from typing import Optional
 
-from auth.database import User, get_user_db
 from fastapi import Depends, Request
 from fastapi_users import (
     BaseUserManager, UUIDIDMixin, schemas, models, exceptions
 )
+from fastapi_users.db import SQLAlchemyUserDatabase
 
 from src.config import settings
+from src.db.session import AsyncSession, get_async_session
+from .models import User
+
+
+async def get_user_db(session: AsyncSession = Depends(get_async_session)):
+    yield SQLAlchemyUserDatabase(session, User)
 
 
 class UserManager(UUIDIDMixin, BaseUserManager[User, uuid.UUID]):

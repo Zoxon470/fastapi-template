@@ -5,6 +5,7 @@ from fastapi_users.db import (
     SQLAlchemyBaseUserTable
 )
 from sqlalchemy import Column, Boolean, String, TIMESTAMP
+from sqlalchemy.dialects.postgresql import UUID
 
 from src.db.models import BaseModel
 
@@ -12,6 +13,7 @@ from src.db.models import BaseModel
 class User(SQLAlchemyBaseUserTable[uuid.UUID], BaseModel):
     __tablename__ = "users"
 
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     email = Column(String(length=256), unique=True, index=True, nullable=False)
     username = Column(String(length=256), nullable=False)
     registered_at = Column(TIMESTAMP, default=datetime.utcnow)
