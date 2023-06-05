@@ -8,7 +8,7 @@ from pydantic import (
 class AppSettings(BaseSettings):
     SERVICE_NAME: str = "FastApi Template"
     SERVER_NAME: str = "DEV"
-    DEBUG: bool = True
+    DEBUG: bool = False
     SECRET_KEY: str = "=%m=#x49tt#csz=s!u1d%08o1j0(t1de(1-(vqe_ojy05$^v=^"
     JWT_SECRET: str = SECRET_KEY
     JWT_LIFETIME: int = 3600
