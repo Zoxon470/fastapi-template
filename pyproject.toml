@@ -18,10 +18,13 @@ sqlalchemy = "2.0.13"
 uvicorn = "0.22.0"
 pydantic = "1.10.7"
 python-dotenv = "^1.0.0"
+httpx = "^0.24.1"
 
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"
+pytest-cov = "^4.1.0"
+pytest-xdist = "^3.3.1"
 
 
 [tool.poetry.group.prod.dependencies]
